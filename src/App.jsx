@@ -52,8 +52,8 @@ function ProjectCard({ project, index, onClick }) {
       style={{
         marginTop: offset,
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(40px)",
-        transition: `opacity 0.8s ease ${index * 0.08}s, transform 0.8s ease ${index * 0.08}s`,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transition: `opacity 0.4s ease ${index * 0.04}s, transform 0.4s ease ${index * 0.04}s`,
         cursor: "pointer",
       }}
     >
@@ -224,10 +224,34 @@ function HomeBlurb({ animate, onAnimated }) {
   }, [animate, onAnimated]);
 
   return (
-    <div className="home-blurb-wrap" style={{
-      paddingTop: "24vh", minWidth: 720, width: 720,
-      margin: "0 auto",
-    }}>
+    <div style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
+      {/* Background video - mobile only */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="mobile-cover-video"
+        style={{
+          position: "absolute", top: 0, left: 0,
+          width: "100%", height: "100%",
+          objectFit: "cover", zIndex: 0,
+          display: "none",
+        }}
+      >
+        <source src="/cover.mp4" type="video/mp4" />
+      </video>
+      {/* Dark overlay - mobile only */}
+      <div className="mobile-cover-overlay" style={{
+        position: "absolute", inset: 0,
+        background: "rgba(0,0,0,0.65)", zIndex: 1,
+        display: "none",
+      }} />
+      {/* Blurb content */}
+      <div className="home-blurb-wrap" style={{
+        paddingTop: "24vh", minWidth: 720, width: 720,
+        margin: "0 auto", position: "relative", zIndex: 2,
+      }}>
       <div className="home-blurb-text" style={{
         fontSize: 26, fontWeight: 300, lineHeight: 1.65,
         letterSpacing: "0.01em", paddingRight: 40,
@@ -256,6 +280,7 @@ function HomeBlurb({ animate, onAnimated }) {
           to { opacity: 1; }
         }
       `}</style>
+    </div>
     </div>
   );
 }
@@ -345,12 +370,14 @@ export default function BlaizeFobbe() {
           .about-layout { flex-direction: column !important; gap: 40px !important; }
           .about-image { width: 100% !important; max-width: 280px !important; }
           .home-blurb-wrap { min-width: unset !important; width: 100% !important; margin: 0 !important; padding-top: 30vh !important; display: flex !important; justify-content: center !important; }
-          .home-blurb-text { font-size: 20px !important; padding-right: 0 !important; text-align: center !important; }
+          .home-blurb-text { font-size: 22px !important; padding-right: 0 !important; text-align: center !important; max-width: 85vw !important; }
           .work-header { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
-          .project-detail-bottom { flex-direction: column !important; gap: 12px !important; }
+          .project-detail-bottom { flex-direction: row !important; gap: 12px !important; }
           .filter-row { order: 1; }
           .social-row { display: none !important; }
           .mobile-social-bottom { display: flex !important; }
+          .mobile-cover-video { display: block !important; }
+          .mobile-cover-overlay { display: block !important; }
         }
       `}</style>
 
@@ -377,7 +404,7 @@ export default function BlaizeFobbe() {
         <div style={{
           position: "fixed", inset: 0, zIndex: 55, background: "#000",
           display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "center", gap: 32,
+          alignItems: "center", justifyContent: "flex-start", paddingTop: "30vh", gap: 32,
         }}>
           {navItems.map((item) => (
             <div key={item.key}
@@ -486,7 +513,7 @@ export default function BlaizeFobbe() {
 
         {/* ABOUT */}
         {page === "about" && (
-          <div style={{ maxWidth: 900, paddingTop: "22vh", margin: "0 auto" }}>
+          <div className="about-page-wrap" style={{ maxWidth: 900, paddingTop: "22vh", margin: "0 auto" }}>
             <div className="about-layout" style={{ display: "flex", gap: 72 }}>
               <div className="about-image" style={{ width: 320, flexShrink: 0 }}>
                 <img src="/images/vertblaize.png" alt="Blaize Fobbe" style={{
@@ -503,7 +530,7 @@ export default function BlaizeFobbe() {
                     Nike, Google, Calvin Klein, Jordan, Porsche, Red Bull, Gap, Spotify, Cactus Jack, Figs, Leica, New Balance, Lacoste, Mountain Hardwear, eBay
                   </div>
                 </div>
-                <div style={{ display: "flex", gap: 56 }}>
+                <div className="about-contacts" style={{ display: "flex", gap: 56 }}>
                   <div>
                     <div style={{
                       fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
