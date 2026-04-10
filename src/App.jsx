@@ -4,23 +4,23 @@ const PROJECTS = {
   all: [
     { id: 1, title: "Figs x New Balance 997H — Extremes", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_8.jpg", vimeo: "909886821" },
     { id: 2, title: "Calvin Klein — Pride", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_7.jpg", vimeo: "726852934", vimeoHash: "ab3f985689" },
-    { id: 3, title: "Requiem", role: "Director", category: "Film", aspect: "16/9", thumb: "/images/thumb_11.jpg", vimeo: "830769227" },
-    { id: 4, title: "Google — Seed", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_3.jpg", vimeo: "1038510961", vimeoHash: "eacf923e38" },
-    { id: 5, title: "Mati — Pressure", role: "Director", category: "Music", aspect: "3104/2160", thumb: "/images/thumb_6.jpg", vimeo: "761345388" },
-    { id: 6, title: "American Eagle — Live Your Life", role: "Editor", category: "Brand", aspect: "2880/2160", thumb: "/images/edit_10.jpg", vimeo: "995661319", vimeoHash: "ba34f30287" },
-    { id: 7, title: "Sapasi", role: "Director", category: "Brand", aspect: "2944/2160", thumb: "/images/thumb_3.jpg", vimeo: "970279084" },
+    { id: 3, title: "Sapasi", role: "Director", category: "Brand", aspect: "2944/2160", thumb: "/images/thumb_3.jpg", vimeo: "970279084" },
+    { id: 4, title: "Requiem", role: "Director", category: "Film", aspect: "16/9", thumb: "/images/thumb_11.jpg", vimeo: "830769227" },
+    { id: 5, title: "Google — Seed", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_3.jpg", vimeo: "1038510961", vimeoHash: "eacf923e38" },
+    { id: 6, title: "Mati — Pressure", role: "Director", category: "Music", aspect: "3104/2160", thumb: "/images/thumb_6.jpg", vimeo: "761345388" },
+    { id: 7, title: "MASN — Here If You Need Me", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_9.jpg", vimeo: "970175484" },
     { id: 8, title: "Porsche — 968 L'ART", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_9.jpg", vimeo: "800032962" },
-    { id: 9, title: "MASN — Here If You Need Me", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_9.jpg", vimeo: "970175484" },
+    { id: 9, title: "Big House — Home Goods Skits", role: "Director", category: "Brand", aspect: "2880/2160", thumb: "/images/thumb_0.jpg", vimeo: "1163381474" },
     { id: 10, title: "Travis Scott x Jordan 1 Low — Don't Get Caught", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_4.jpg", vimeo: "761584332", vimeoHash: "e701da9787" },
-    { id: 11, title: "Big House — Home Goods Skits", role: "Director", category: "Brand", aspect: "2880/2160", thumb: "/images/thumb_0.jpg", vimeo: "1163381474" },
-    { id: 12, title: "Giveon — Lost Me", role: "Editor", category: "Music", aspect: "16/9", thumb: "/images/edit_6.jpg", vimeo: "761343426" },
+    { id: 11, title: "Giveon — Lost Me", role: "Editor", category: "Music", aspect: "16/9", thumb: "/images/edit_6.jpg", vimeo: "761343426" },
+    { id: 12, title: "American Eagle — Live Your Life", role: "Editor", category: "Brand", aspect: "2880/2160", thumb: "/images/edit_10.jpg", vimeo: "995661319", vimeoHash: "ba34f30287" },
     { id: 13, title: "Spotify Frequency — KWN", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_1.jpg", vimeo: "1121369000" },
     { id: 14, title: "Nike Air Force 1 — Mid Jewel NYC", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_5.jpg", vimeo: "655533206", vimeoHash: "a6222f8687" },
-    { id: 15, title: "Orlando Pride — The Decennial Kit", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_2.jpg", vimeo: "1061834025" },
-    { id: 16, title: "Jordan Essentials — Marquise Miller", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_8.jpg", vimeo: "772302980", vimeoHash: "1158642730" },
-    { id: 17, title: "Mati — Forever Chimes", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_4.jpg", vimeo: "785782071" },
-    { id: 18, title: "New Balance — Forever Yours", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_1.jpg", vimeo: "855779982", vimeoHash: "0f482760c6" },
-    { id: 19, title: "Ber — Superspreader", role: "Director", category: "Music", aspect: "1928/1440", thumb: "/images/thumb_5.jpg", vimeo: "761590340" },
+    { id: 15, title: "Ber — Superspreader", role: "Director", category: "Music", aspect: "1928/1440", thumb: "/images/thumb_5.jpg", vimeo: "761590340" },
+    { id: 16, title: "Orlando Pride — The Decennial Kit", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_2.jpg", vimeo: "1061834025" },
+    { id: 17, title: "Jordan Essentials — Marquise Miller", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_8.jpg", vimeo: "772302980", vimeoHash: "1158642730" },
+    { id: 18, title: "Mati — Forever Chimes", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_4.jpg", vimeo: "785782071" },
+    { id: 19, title: "New Balance — Forever Yours", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_1.jpg", vimeo: "855779982", vimeoHash: "0f482760c6" },
     { id: 20, title: "untitled_070724", role: "Shot on iPhone", category: "Film", aspect: "16/9", thumb: "/images/thumb_10.jpg", vimeo: "988435818" },
     { id: 21, title: "Mountain Hardwear — Seek Wilder Paths", role: "Cinematographer / Editor", category: "Brand", aspect: "16/9", thumb: "/images/thumb_7.jpg", vimeo: "858091000" },
   ],
@@ -69,18 +69,9 @@ function ProjectCard({ project, index, onClick }) {
         }} />
         <div style={{
           position: "absolute", inset: 0,
-          background: hovered ? "rgba(0,0,0,0.2)" : "rgba(0,0,0,0)",
+          background: hovered ? "rgba(0,0,0,0.32)" : "rgba(0,0,0,0)",
           transition: "background 0.4s ease",
-          display: "flex", alignItems: "center", justifyContent: "center",
-        }}>
-          <svg style={{
-            opacity: hovered ? 1 : 0,
-            transform: hovered ? "scale(1)" : "scale(0.8)",
-            transition: "all 0.3s ease",
-          }} width="44" height="44" viewBox="0 0 48 48" fill="none">
-            <polygon points="18,12 38,24 18,36" fill="rgba(255,255,255,0.85)" />
-          </svg>
-        </div>
+        }} />
         <div style={{
           position: "absolute", inset: 0, opacity: 0.035, mixBlendMode: "overlay",
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")`,
@@ -134,21 +125,23 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
 
       {/* Video embed */}
       {project.vimeo ? (
-        <div style={{
-          position: "relative",
-          paddingBottom: embedPadding,
-          height: 0,
-          overflow: "hidden", background: "#000", marginBottom: 32,
-        }}>
-          <iframe
-            src={vimeoUrl}
-            style={{
-              position: "absolute", top: 0, left: 0,
-              width: "100%", height: "100%", border: "none",
-            }}
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-          />
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div style={{
+            position: "relative",
+            paddingBottom: embedPadding,
+            height: 0,
+            overflow: "hidden", background: "#000", marginBottom: 32,
+          }}>
+            <iframe
+              src={vimeoUrl}
+              style={{
+                position: "absolute", top: 0, left: 0,
+                width: "100%", height: "100%", border: "none",
+              }}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         </div>
       ) : (
         <div style={{
@@ -161,9 +154,10 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
       )}
 
       {/* Title, role, and nav */}
-      <div style={{
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-      }}>
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <div className="project-detail-bottom" style={{
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+        }}>
         <div>
           <div style={{
             fontSize: 14, fontWeight: 400, letterSpacing: "0.04em",
@@ -207,6 +201,7 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
           </svg>
         </div>
       </div>
+      </div>
     </div>
   );
 }
@@ -229,11 +224,11 @@ function HomeBlurb({ animate, onAnimated }) {
   }, [animate, onAnimated]);
 
   return (
-    <div style={{
+    <div className="home-blurb-wrap" style={{
       paddingTop: "24vh", minWidth: 720, width: 720,
       margin: "0 auto",
     }}>
-      <div style={{
+      <div className="home-blurb-text" style={{
         fontSize: 26, fontWeight: 300, lineHeight: 1.65,
         letterSpacing: "0.01em", paddingRight: 40,
       }}>
@@ -271,13 +266,14 @@ export default function BlaizeFobbe() {
   const [navHover, setNavHover] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const scrollRef = useRef(null);
 
   const getFilteredProjects = () => {
     const list = PROJECTS.all;
     if (workFilter === "All") return list;
     if (workFilter === "Director") {
-      const dirOrder = ["Requiem", "Sapasi", "Big House", "Mati — Pressure", "Spotify Frequency", "Figs x New Balance", "MASN", "Mati — Forever", "Orlando Pride", "untitled", "Ber"];
+      const dirOrder = ["Requiem", "Sapasi", "Figs x New Balance", "Big House", "Spotify Frequency", "Mati — Pressure", "MASN", "Ber", "Mati — Forever", "Orlando Pride", "untitled"];
       return list.filter((p) => p.role.includes("Director") || p.role === "Shot on iPhone")
         .sort((a, b) => {
           const ai = dirOrder.findIndex(d => a.title.includes(d));
@@ -341,10 +337,66 @@ export default function BlaizeFobbe() {
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #222; }
         a { text-decoration: none; }
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .mobile-nav { display: flex !important; }
+          .main-content { margin-left: 0 !important; padding: 20px 24px !important; min-width: unset !important; }
+          .work-grid { grid-template-columns: 1fr !important; }
+          .about-layout { flex-direction: column !important; gap: 40px !important; }
+          .about-image { width: 100% !important; max-width: 280px !important; }
+          .home-blurb-wrap { min-width: unset !important; width: 100% !important; margin: 0 !important; padding-top: 30vh !important; display: flex !important; justify-content: center !important; }
+          .home-blurb-text { font-size: 20px !important; padding-right: 0 !important; text-align: center !important; }
+          .work-header { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+          .project-detail-bottom { flex-direction: column !important; gap: 12px !important; }
+          .filter-row { order: 1; }
+          .social-row { display: none !important; }
+          .mobile-social-bottom { display: flex !important; }
+        }
       `}</style>
 
+      {/* Mobile Hamburger */}
+      <div className="mobile-nav" style={{
+        display: "none", position: "fixed", top: 16, right: 20,
+        zIndex: 60, cursor: "pointer", padding: 8,
+        transition: "transform 0.4s ease",
+        transform: menuOpen ? "rotate(90deg)" : "rotate(0deg)",
+      }} onClick={() => setMenuOpen(!menuOpen)}>
+        <div style={{
+          width: 20, height: 1.5, background: "#e8e4df",
+          transform: "rotate(45deg)",
+          position: "absolute",
+        }} />
+        <div style={{
+          width: 20, height: 1.5, background: "#e8e4df",
+          transform: "rotate(-45deg)",
+        }} />
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {menuOpen && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 55, background: "#000",
+          display: "flex", flexDirection: "column",
+          alignItems: "center", justifyContent: "center", gap: 32,
+        }}>
+          {navItems.map((item) => (
+            <div key={item.key}
+              onClick={() => { setPage(item.key); setWorkFilter("All"); setSelectedProject(null); setMenuOpen(false); if (scrollRef.current) scrollRef.current.scrollTop = 0; }}
+              style={{
+                fontSize: 20, fontWeight: page === item.key ? 400 : 300,
+                letterSpacing: "0.06em",
+                color: page === item.key ? "#e8e4df" : "#555",
+                cursor: "pointer", transition: "color 0.3s ease",
+              }}
+            >
+              {item.label}
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* Left Side Nav */}
-      <nav style={{
+      <nav className="desktop-nav" style={{
         position: "fixed", left: 0, top: 0, bottom: 0, width: 160,
         display: "flex", flexDirection: "column",
         justifyContent: "center",
@@ -371,7 +423,7 @@ export default function BlaizeFobbe() {
       </nav>
 
       {/* Main Content */}
-      <main style={{
+      <main className="main-content" style={{
         marginLeft: 160, minHeight: "100vh", padding: "48px 72px",
         minWidth: 800, overflow: "visible",
       }}>
@@ -382,8 +434,8 @@ export default function BlaizeFobbe() {
         {/* WORK */}
         {page === "work" && !selectedProject && (
           <div>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 52 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+            <div className="work-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 52 }}>
+              <div className="filter-row" style={{ display: "flex", alignItems: "center", gap: 24 }}>
               {["All", "Director", "Editor"].map((f) => (
                 <div key={f} onClick={() => setWorkFilter(f)}
                   style={{
@@ -397,7 +449,7 @@ export default function BlaizeFobbe() {
                 </div>
               ))}
               </div>
-              <div style={{ display: "flex", gap: 20 }}>
+              <div className="social-row" style={{ display: "flex", gap: 20 }}>
                 <a href="https://www.instagram.com/blaizefobbe/" target="_blank" rel="noopener noreferrer"
                   style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", textTransform: "uppercase", color: "#444", transition: "color 0.3s" }}
                   onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
@@ -410,26 +462,33 @@ export default function BlaizeFobbe() {
                 >Vimeo</a>
               </div>
             </div>
-            <div style={{
+            <div className="work-grid" style={{
               display: "grid", gridTemplateColumns: "1fr 1fr", gap: "56px 40px",
             }}>
               {getFilteredProjects().map((p, i) => (
                 <ProjectCard key={p.id} project={p} index={i} onClick={handleProjectClick} />
               ))}
             </div>
+            {/* Mobile-only social links at bottom */}
+            <div className="mobile-social-bottom" style={{
+              display: "none", justifyContent: "flex-end", gap: 24, marginTop: 48, paddingBottom: 32,
+            }}>
+              <a href="https://www.instagram.com/blaizefobbe/" target="_blank" rel="noopener noreferrer"
+                style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", textTransform: "uppercase", color: "#444" }}>Instagram</a>
+              <a href="https://vimeo.com/blaizefobbe" target="_blank" rel="noopener noreferrer"
+                style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", textTransform: "uppercase", color: "#444" }}>Vimeo</a>
+            </div>
           </div>
         )}
-
-        {/* PROJECT DETAIL */}
         {page === "work" && selectedProject && (
           <ProjectDetail project={selectedProject} onBack={handleBack} onPrev={handlePrev} onNext={handleNext} hasPrev={hasPrev} hasNext={hasNext} />
         )}
 
         {/* ABOUT */}
         {page === "about" && (
-          <div style={{ maxWidth: 900, paddingTop: "18vh", margin: "0 auto" }}>
-            <div style={{ display: "flex", gap: 80 }}>
-              <div style={{ width: 280, flexShrink: 0 }}>
+          <div style={{ maxWidth: 900, paddingTop: "22vh", margin: "0 auto" }}>
+            <div className="about-layout" style={{ display: "flex", gap: 72 }}>
+              <div className="about-image" style={{ width: 320, flexShrink: 0 }}>
                 <img src="/images/vertblaize.png" alt="Blaize Fobbe" style={{
                   width: "100%", display: "block", objectFit: "cover",
                 }} />
