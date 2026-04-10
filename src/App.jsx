@@ -6,13 +6,13 @@ const PROJECTS = {
     { id: 2, title: "Calvin Klein — Pride", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_7.jpg", vimeo: "726852934", vimeoHash: "ab3f985689" },
     { id: 3, title: "Requiem", role: "Director", category: "Film", aspect: "16/9", thumb: "/images/thumb_11.jpg", vimeo: "830769227" },
     { id: 4, title: "Google — Seed", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_3.jpg", vimeo: "1038510961", vimeoHash: "eacf923e38" },
-    { id: 5, title: "Mati — Pressure", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_6.jpg", vimeo: "761345388" },
-    { id: 6, title: "American Eagle — Live Your Life", role: "Editor", category: "Brand", aspect: "4/3", thumb: "/images/edit_10.jpg", vimeo: "995661319", vimeoHash: "ba34f30287" },
-    { id: 7, title: "Sapasi", role: "Director", category: "Brand", aspect: "4/3", thumb: "/images/thumb_3.jpg", vimeo: "970279084" },
+    { id: 5, title: "Mati — Pressure", role: "Director", category: "Music", aspect: "3104/2160", thumb: "/images/thumb_6.jpg", vimeo: "761345388" },
+    { id: 6, title: "American Eagle — Live Your Life", role: "Editor", category: "Brand", aspect: "2880/2160", thumb: "/images/edit_10.jpg", vimeo: "995661319", vimeoHash: "ba34f30287" },
+    { id: 7, title: "Sapasi", role: "Director", category: "Brand", aspect: "2944/2160", thumb: "/images/thumb_3.jpg", vimeo: "970279084" },
     { id: 8, title: "Porsche — 968 L'ART", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_9.jpg", vimeo: "800032962" },
     { id: 9, title: "MASN — Here If You Need Me", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_9.jpg", vimeo: "970175484" },
     { id: 10, title: "Travis Scott x Jordan 1 Low — Don't Get Caught", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_4.jpg", vimeo: "761584332", vimeoHash: "e701da9787" },
-    { id: 11, title: "Big House — Home Goods Skits", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_0.jpg", vimeo: "1163381474" },
+    { id: 11, title: "Big House — Home Goods Skits", role: "Director", category: "Brand", aspect: "2880/2160", thumb: "/images/thumb_0.jpg", vimeo: "1163381474" },
     { id: 12, title: "Giveon — Lost Me", role: "Editor", category: "Music", aspect: "16/9", thumb: "/images/edit_6.jpg", vimeo: "761343426" },
     { id: 13, title: "Spotify Frequency — KWN", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_1.jpg", vimeo: "1121369000" },
     { id: 14, title: "Nike Air Force 1 — Mid Jewel NYC", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_5.jpg", vimeo: "655533206", vimeoHash: "a6222f8687" },
@@ -20,7 +20,7 @@ const PROJECTS = {
     { id: 16, title: "Jordan Essentials — Marquise Miller", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_8.jpg", vimeo: "772302980", vimeoHash: "1158642730" },
     { id: 17, title: "Mati — Forever Chimes", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_4.jpg", vimeo: "785782071" },
     { id: 18, title: "New Balance — Forever Yours", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_1.jpg", vimeo: "855779982", vimeoHash: "0f482760c6" },
-    { id: 19, title: "Ber — Superspreader", role: "Director", category: "Music", aspect: "4/3", thumb: "/images/thumb_5.jpg", vimeo: "761590340" },
+    { id: 19, title: "Ber — Superspreader", role: "Director", category: "Music", aspect: "1928/1440", thumb: "/images/thumb_5.jpg", vimeo: "761590340" },
     { id: 20, title: "untitled_070724", role: "Shot on iPhone", category: "Film", aspect: "16/9", thumb: "/images/thumb_10.jpg", vimeo: "988435818" },
     { id: 21, title: "Mountain Hardwear — Seek Wilder Paths", role: "Cinematographer / Editor", category: "Brand", aspect: "16/9", thumb: "/images/thumb_7.jpg", vimeo: "858091000" },
   ],
@@ -102,6 +102,9 @@ function ProjectCard({ project, index, onClick }) {
 }
 
 function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
+  const [aw, ah] = project.aspect.split("/").map(Number);
+  const embedPadding = (ah / aw * 100).toFixed(2) + "%";
+
   const vimeoUrl = project.vimeoHash
     ? `https://player.vimeo.com/video/${project.vimeo}?h=${project.vimeoHash}&title=0&byline=0&portrait=0&dnt=1`
     : `https://player.vimeo.com/video/${project.vimeo}?title=0&byline=0&portrait=0&dnt=1`;
@@ -132,8 +135,10 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
       {/* Video embed */}
       {project.vimeo ? (
         <div style={{
-          position: "relative", paddingBottom: "56.25%", height: 0,
-          overflow: "hidden", background: "#111", marginBottom: 32,
+          position: "relative",
+          paddingBottom: embedPadding,
+          height: 0,
+          overflow: "hidden", background: "#000", marginBottom: 32,
         }}>
           <iframe
             src={vimeoUrl}
@@ -212,7 +217,7 @@ function HomeBlurb({ animate, onAnimated }) {
   const words = text.split(" ");
 
   const [delays] = useState(() => {
-    const maxDelay = 2.0;
+    const maxDelay = 1.5;
     return words.map(() => Math.random() * maxDelay);
   });
 
