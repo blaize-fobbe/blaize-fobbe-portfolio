@@ -107,25 +107,24 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
     }}>
       <style>{`@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }`}</style>
 
-      {/* Back button */}
-      <div
-        onClick={onBack}
-        style={{
-          fontSize: 10, fontWeight: 300, letterSpacing: "0.12em",
-          textTransform: "uppercase", color: "#555",
-          cursor: "pointer", marginBottom: 40,
-          transition: "color 0.3s",
-          display: "inline-block",
-        }}
-        onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
-        onMouseLeave={(e) => e.target.style.color = "#555"}
-      >
-        ← Back
-      </div>
-
       {/* Video embed */}
       {project.vimeo ? (
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          {/* Back button */}
+          <div
+            onClick={onBack}
+            style={{
+              fontSize: 10, fontWeight: 300, letterSpacing: "0.12em",
+              textTransform: "uppercase", color: "#555",
+              cursor: "pointer", marginBottom: 24,
+              transition: "color 0.3s",
+              display: "inline-block",
+            }}
+            onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
+            onMouseLeave={(e) => e.target.style.color = "#555"}
+          >
+            ← Back
+          </div>
           <div style={{
             position: "relative",
             paddingBottom: embedPadding,
@@ -144,12 +143,28 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
           </div>
         </div>
       ) : (
-        <div style={{
-          aspectRatio: "16/9", background: "#111",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          marginBottom: 32, color: "#444", fontSize: 13, fontWeight: 300,
-        }}>
-          Video coming soon
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <div
+            onClick={onBack}
+            style={{
+              fontSize: 10, fontWeight: 300, letterSpacing: "0.12em",
+              textTransform: "uppercase", color: "#555",
+              cursor: "pointer", marginBottom: 24,
+              transition: "color 0.3s",
+              display: "inline-block",
+            }}
+            onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
+            onMouseLeave={(e) => e.target.style.color = "#555"}
+          >
+            ← Back
+          </div>
+          <div style={{
+            aspectRatio: "16/9", background: "#111",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            marginBottom: 32, color: "#444", fontSize: 13, fontWeight: 300,
+          }}>
+            Video coming soon
+          </div>
         </div>
       )}
 
@@ -206,8 +221,9 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
   );
 }
 
-function HomeBlurb({ animate, onAnimated }) {
+function HomeBlurb({ animate, onAnimated, onNavigate }) {
   const boldWords = new Set(["Blaize", "Fobbe", "directing", "editing"]);
+  const linkMap = { "Blaize": "about", "Fobbe": "about", "directing": "director", "editing": "editor" };
   const text = "Blaize Fobbe is a filmmaker based in Los Angeles. Originally from Minneapolis, he began making films with friends as a child. Now he focuses his efforts on directing and editing branded, music, and documentary-style films. His portfolio includes collaborations with brands like Nike, Calvin Klein, Mountain Hardwear, Leica, Spotify, Porsche, and many more.";
   const words = text.split(" ");
 
@@ -258,15 +274,19 @@ function HomeBlurb({ animate, onAnimated }) {
       }}>
         {words.map((word, i) => {
           const isBold = boldWords.has(word);
+          const link = linkMap[word];
           return (
             <span
               key={i}
+              onClick={link ? () => onNavigate(link) : undefined}
               style={{
                 display: "inline",
                 color: isBold ? "#e8e4df" : "#807b74",
                 fontWeight: isBold ? 400 : 300,
                 opacity: animate ? 0 : 1,
                 animation: animate ? `wordFade 1s ease-in-out ${delays[i]}s forwards` : "none",
+                cursor: link ? "pointer" : "default",
+                transition: "opacity 0.3s",
               }}
             >
               {word}{" "}
@@ -281,6 +301,152 @@ function HomeBlurb({ animate, onAnimated }) {
         }
       `}</style>
     </div>
+    </div>
+  );
+}
+
+const BTS_ITEMS = [
+  { type: "img", src: "/bts/bts_desert.jpg", x: 80, y: 60, w: 220, r: -3 },
+  { type: "vid", src: "/bts/bts_vid_1.mp4", x: 380, y: 30, w: 200, r: 2 },
+  { type: "img", src: "/bts/bts_slate.jpg", x: 660, y: 80, w: 180, r: -1 },
+  { type: "vid", src: "/bts/bts_vid_2.mp4", x: 920, y: 40, w: 210, r: 3 },
+  { type: "img", src: "/bts/bts_brick.jpg", x: 1180, y: 70, w: 190, r: -2 },
+  { type: "vid", src: "/bts/bts_vid_3.mp4", x: 1440, y: 50, w: 200, r: 1 },
+  { type: "img", src: "/bts/bts_sunset_shoot.jpg", x: 150, y: 320, w: 240, r: 2 },
+  { type: "vid", src: "/bts/bts_vid_4.mp4", x: 460, y: 280, w: 180, r: -3 },
+  { type: "img", src: "/bts/bts_studio.jpg", x: 720, y: 340, w: 200, r: 1 },
+  { type: "vid", src: "/bts/bts_vid_5.mp4", x: 1000, y: 300, w: 220, r: -2 },
+  { type: "img", src: "/bts/bts_camera_bag.jpg", x: 1280, y: 330, w: 170, r: 3 },
+  { type: "vid", src: "/bts/bts_vid_6.mp4", x: 1520, y: 290, w: 190, r: -1 },
+  { type: "vid", src: "/bts/bts_vid_7.mp4", x: 50, y: 580, w: 200, r: -2 },
+  { type: "img", src: "/bts/bts_film_scan.jpg", x: 330, y: 560, w: 230, r: 3 },
+  { type: "vid", src: "/bts/bts_vid_8.mp4", x: 640, y: 600, w: 190, r: -1 },
+  { type: "img", src: "/bts/bts_leica.jpg", x: 910, y: 570, w: 180, r: 2 },
+  { type: "vid", src: "/bts/bts_vid_9.mp4", x: 1170, y: 590, w: 210, r: -3 },
+  { type: "vid", src: "/bts/bts_vid_10.mp4", x: 1430, y: 560, w: 200, r: 1 },
+  { type: "vid", src: "/bts/bts_vid_11.mp4", x: 120, y: 840, w: 190, r: 2 },
+  { type: "vid", src: "/bts/bts_vid_12.mp4", x: 400, y: 820, w: 210, r: -2 },
+  { type: "vid", src: "/bts/bts_vid_13.mp4", x: 690, y: 860, w: 180, r: 1 },
+  { type: "vid", src: "/bts/bts_vid_14.mp4", x: 960, y: 830, w: 220, r: -3 },
+  { type: "vid", src: "/bts/bts_vid_15.mp4", x: 1240, y: 850, w: 190, r: 2 },
+  { type: "vid", src: "/bts/bts_vid_16.mp4", x: 1500, y: 820, w: 200, r: -1 },
+  { type: "vid", src: "/bts/bts_vid_17.mp4", x: 80, y: 1100, w: 210, r: -2 },
+  { type: "vid", src: "/bts/bts_vid_18.mp4", x: 370, y: 1080, w: 190, r: 3 },
+  { type: "vid", src: "/bts/bts_vid_19.mp4", x: 650, y: 1110, w: 200, r: -1 },
+  { type: "vid", src: "/bts/bts_vid_20.mp4", x: 930, y: 1090, w: 220, r: 2 },
+  { type: "vid", src: "/bts/bts_vid.mp4", x: 1200, y: 1100, w: 200, r: -3 },
+  { type: "vid", src: "/bts/bts_vid_a.mp4", x: 1460, y: 1080, w: 190, r: 1 },
+  { type: "vid", src: "/bts/bts_vid_b.mp4", x: 250, y: 1340, w: 210, r: -2 },
+  { type: "vid", src: "/bts/bts_vid_earth.mp4", x: 560, y: 1360, w: 200, r: 3 },
+];
+
+function BTSItem({ item }) {
+  const vidRef = useRef(null);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: item.x, top: item.y,
+        width: item.w,
+        transform: `rotate(${item.r}deg)`,
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.5)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = `rotate(${item.r}deg) scale(1.05)`;
+        e.currentTarget.style.zIndex = 10;
+        if (vidRef.current) vidRef.current.play();
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = `rotate(${item.r}deg) scale(1)`;
+        e.currentTarget.style.zIndex = 1;
+        if (vidRef.current) { vidRef.current.pause(); vidRef.current.currentTime = 0; }
+      }}
+    >
+      {item.type === "img" ? (
+        <img src={item.src} alt="" style={{ width: "100%", display: "block" }} />
+      ) : (
+        <video ref={vidRef} src={item.src} muted loop playsInline
+          style={{ width: "100%", display: "block" }} />
+      )}
+    </div>
+  );
+}
+
+function BTSPage() {
+  const canvasRef = useRef(null);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(0.6);
+  const [dragging, setDragging] = useState(false);
+  const dragStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
+
+  const handleWheel = (e) => {
+    e.preventDefault();
+    setZoom(z => Math.min(1.5, Math.max(0.25, z - e.deltaY * 0.001)));
+  };
+
+  const handleMouseDown = (e) => {
+    setDragging(true);
+    dragStart.current = { x: e.clientX, y: e.clientY, panX: pan.x, panY: pan.y };
+  };
+
+  const handleMouseMove = (e) => {
+    if (!dragging) return;
+    setPan({
+      x: dragStart.current.panX + (e.clientX - dragStart.current.x),
+      y: dragStart.current.panY + (e.clientY - dragStart.current.y),
+    });
+  };
+
+  const handleMouseUp = () => setDragging(false);
+
+  // Touch support
+  const handleTouchStart = (e) => {
+    const t = e.touches[0];
+    dragStart.current = { x: t.clientX, y: t.clientY, panX: pan.x, panY: pan.y };
+    setDragging(true);
+  };
+  const handleTouchMove = (e) => {
+    if (!dragging) return;
+    const t = e.touches[0];
+    setPan({
+      x: dragStart.current.panX + (t.clientX - dragStart.current.x),
+      y: dragStart.current.panY + (t.clientY - dragStart.current.y),
+    });
+  };
+  const handleTouchEnd = () => setDragging(false);
+
+  useEffect(() => {
+    const el = canvasRef.current;
+    if (el) el.addEventListener("wheel", handleWheel, { passive: false });
+    return () => { if (el) el.removeEventListener("wheel", handleWheel); };
+  }, []);
+
+  return (
+    <div
+      ref={canvasRef}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      style={{
+        position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
+        overflow: "hidden", background: "#000",
+        cursor: dragging ? "grabbing" : "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" style=\"font-size:24px\"><text y=\"24\">🌍</text></svg>') 16 16, grab",
+        zIndex: 30,
+      }}
+    >
+      <div style={{
+        transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+        transformOrigin: "0 0",
+        position: "absolute",
+        width: 1800, height: 1600,
+      }}>
+        {BTS_ITEMS.map((item, i) => <BTSItem key={i} item={item} />)}
+      </div>
     </div>
   );
 }
@@ -317,6 +483,7 @@ export default function BlaizeFobbe() {
     { key: "home", label: "Home" },
     { key: "work", label: "Work" },
     { key: "about", label: "About" },
+    { key: "more", label: "More" },
   ];
 
   const handleProjectClick = (project) => {
@@ -454,7 +621,12 @@ export default function BlaizeFobbe() {
       }}>
 
         {/* HOME */}
-        {page === "home" && <HomeBlurb animate={!hasAnimated} onAnimated={() => setHasAnimated(true)} />}
+        {page === "home" && <HomeBlurb animate={!hasAnimated} onAnimated={() => setHasAnimated(true)} onNavigate={(target) => {
+          if (target === "about") { setPage("about"); }
+          else if (target === "director") { setPage("work"); setWorkFilter("Director"); }
+          else if (target === "editor") { setPage("work"); setWorkFilter("Editor"); }
+          if (scrollRef.current) scrollRef.current.scrollTop = 0;
+        }} />}
 
         {/* WORK */}
         {page === "work" && !selectedProject && (
@@ -565,6 +737,9 @@ export default function BlaizeFobbe() {
             </div>
           </div>
         )}
+
+        {/* MORE / BTS */}
+        {page === "more" && <BTSPage />}
 
       </main>
     </div>
