@@ -125,7 +125,7 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
 
       {/* Video embed */}
       {project.vimeo ? (
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <div style={{
             position: "relative",
             paddingBottom: embedPadding,
@@ -154,7 +154,7 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
       )}
 
       {/* Title, role, and nav */}
-      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+      <div style={{ maxWidth: 720, margin: "0 auto" }}>
         <div className="project-detail-bottom" style={{
           display: "flex", justifyContent: "space-between", alignItems: "center",
         }}>
