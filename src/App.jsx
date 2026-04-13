@@ -30,182 +30,67 @@ function ProjectCard({ project, onClick }) {
   const [hovered, setHovered] = useState(false);
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
-
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.1 }
-    );
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.1 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
-
   const scale = project.size === "lg" ? 1 : 0.82;
-
   return (
-    <div
-      ref={ref}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={() => onClick(project)}
-      style={{
-        marginBottom: 40,
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
-        transition: "opacity 0.5s ease, transform 0.5s ease",
-        cursor: "pointer",
-        width: `${scale * 100}%`,
-      }}
-    >
-      <div style={{
-        overflow: "hidden", position: "relative", background: "#111",
-      }}>
-        <img src={project.thumb} alt={project.title} style={{
-          width: "100%", display: "block",
-          transform: hovered ? "scale(1.04)" : "scale(1)",
-          transition: "transform 0.6s ease",
-        }} />
-        <div style={{
-          position: "absolute", inset: 0,
-          background: hovered ? "rgba(0,0,0,0.25)" : "rgba(0,0,0,0)",
-          transition: "background 0.4s ease",
-        }} />
+    <div ref={ref} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onClick={() => onClick(project)}
+      style={{ marginBottom: 40, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.5s ease, transform 0.5s ease", cursor: "pointer", width: `${scale * 100}%` }}>
+      <div style={{ overflow: "hidden", position: "relative", background: "#111" }}>
+        <img src={project.thumb} alt={project.title} style={{ width: "100%", display: "block", transform: hovered ? "scale(1.04)" : "scale(1)", transition: "transform 0.6s ease" }} />
+        <div style={{ position: "absolute", inset: 0, background: hovered ? "rgba(0,0,0,0.25)" : "rgba(0,0,0,0)", transition: "background 0.4s ease" }} />
       </div>
       <div style={{ marginTop: 12 }}>
-        <div style={{
-          fontSize: 11, fontWeight: 400, letterSpacing: "0.06em",
-          color: hovered ? "#e8e4df" : "#888",
-          transition: "color 0.3s ease",
-          textTransform: "uppercase",
-        }}>{project.title}</div>
-        <div style={{
-          fontSize: 10, fontWeight: 300, letterSpacing: "0.06em",
-          color: "#555", marginTop: 3,
-        }}>{project.role}</div>
+        <div style={{ fontSize: 11, fontWeight: 400, letterSpacing: "0.04em", color: hovered ? "#e8e4df" : "#888", transition: "color 0.3s ease", textTransform: "uppercase" }}>{project.title}</div>
+        <div style={{ fontSize: 10, fontWeight: 300, letterSpacing: "0.04em", color: "#555", marginTop: 3 }}>{project.role}</div>
       </div>
     </div>
   );
 }
 
-function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
+function ProjectDetail({ project, onPrev, onNext, hasPrev, hasNext }) {
   const [aw, ah] = project.aspect.split("/").map(Number);
   const embedPadding = (ah / aw * 100).toFixed(2) + "%";
-
   const vimeoUrl = project.vimeoHash
     ? `https://player.vimeo.com/video/${project.vimeo}?h=${project.vimeoHash}&title=0&byline=0&portrait=0&dnt=1`
     : `https://player.vimeo.com/video/${project.vimeo}?title=0&byline=0&portrait=0&dnt=1`;
-
   return (
     <div style={{ opacity: 1, animation: "fadeIn 0.4s ease" }}>
       <style>{`@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }`}</style>
-
-      <div className="project-detail-layout" style={{
-        display: "flex", gap: 48, alignItems: "flex-start",
-      }}>
-        <div className="project-info-col" style={{
-          width: 240, flexShrink: 0, paddingTop: 4,
-        }}>
-          <div
-            onClick={onBack}
-            style={{
-              fontSize: 10, fontWeight: 300, letterSpacing: "0.12em",
-              color: "#555", cursor: "pointer", marginBottom: 40,
-              transition: "color 0.3s", display: "inline-block",
-              textTransform: "uppercase",
-            }}
-            onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
-            onMouseLeave={(e) => e.target.style.color = "#555"}
-          >
-            ← Back
-          </div>
-          <div style={{
-            fontSize: 13, fontWeight: 400, letterSpacing: "0.02em",
-            color: "#e8e4df", marginBottom: 6, lineHeight: 1.5,
-            textTransform: "uppercase",
-          }}>{project.title}</div>
-          <div style={{
-            fontSize: 11, fontWeight: 300, letterSpacing: "0.04em", color: "#555",
-          }}>{project.role}</div>
-
-          <div style={{ display: "flex", gap: 28, alignItems: "center", marginTop: 32 }}>
-            <svg onClick={hasPrev ? onPrev : undefined} width="12" height="10" viewBox="0 0 18 14" fill="none"
-              style={{ cursor: hasPrev ? "pointer" : "default", transition: "opacity 0.3s", opacity: hasPrev ? 0.5 : 0.15 }}
-              onMouseEnter={(e) => { if (hasPrev) e.currentTarget.style.opacity = 1; }}
-              onMouseLeave={(e) => { if (hasPrev) e.currentTarget.style.opacity = 0.5; }}
-            >
-              <polygon points="8,0 0,7 8,14" fill="#e8e4df" />
-              <polygon points="17,0 9,7 17,14" fill="#e8e4df" />
-            </svg>
-            <svg onClick={hasNext ? onNext : undefined} width="12" height="10" viewBox="0 0 18 14" fill="none"
-              style={{ cursor: hasNext ? "pointer" : "default", transition: "opacity 0.3s", opacity: hasNext ? 0.5 : 0.15 }}
-              onMouseEnter={(e) => { if (hasNext) e.currentTarget.style.opacity = 1; }}
-              onMouseLeave={(e) => { if (hasNext) e.currentTarget.style.opacity = 0.5; }}
-            >
-              <polygon points="10,0 18,7 10,14" fill="#e8e4df" />
-              <polygon points="1,0 9,7 1,14" fill="#e8e4df" />
-            </svg>
+      <div className="project-detail-layout" style={{ display: "flex", gap: 48, alignItems: "center" }}>
+        <div className="project-info-col" style={{ width: 220, flexShrink: 0 }}>
+          <div style={{ fontSize: 13, fontWeight: 400, letterSpacing: "0.03em", color: "#e8e4df", marginBottom: 6, lineHeight: 1.5, textTransform: "uppercase" }}>{project.title}</div>
+          <div style={{ fontSize: 11, fontWeight: 300, letterSpacing: "0.04em", color: "#555" }}>{project.role}</div>
+          <div style={{ display: "flex", gap: 28, alignItems: "center", marginTop: 28 }}>
+            <svg onClick={hasPrev ? onPrev : undefined} width="12" height="10" viewBox="0 0 18 14" fill="none" style={{ cursor: hasPrev ? "pointer" : "default", transition: "opacity 0.3s", opacity: hasPrev ? 0.5 : 0.15 }} onMouseEnter={(e) => { if (hasPrev) e.currentTarget.style.opacity = 1; }} onMouseLeave={(e) => { if (hasPrev) e.currentTarget.style.opacity = 0.5; }}><polygon points="8,0 0,7 8,14" fill="#e8e4df" /><polygon points="17,0 9,7 17,14" fill="#e8e4df" /></svg>
+            <svg onClick={hasNext ? onNext : undefined} width="12" height="10" viewBox="0 0 18 14" fill="none" style={{ cursor: hasNext ? "pointer" : "default", transition: "opacity 0.3s", opacity: hasNext ? 0.5 : 0.15 }} onMouseEnter={(e) => { if (hasNext) e.currentTarget.style.opacity = 1; }} onMouseLeave={(e) => { if (hasNext) e.currentTarget.style.opacity = 0.5; }}><polygon points="10,0 18,7 10,14" fill="#e8e4df" /><polygon points="1,0 9,7 1,14" fill="#e8e4df" /></svg>
           </div>
         </div>
-
-        <div className="project-video-col" style={{ flex: 1, maxWidth: 560 }}>
-          <div style={{
-            position: "relative",
-            background: "#1a1a2e",
-            border: "1px solid #333",
-            borderRadius: 2,
-          }}>
-            {project.vimeo ? (
-              <div style={{
-                position: "relative", paddingBottom: embedPadding, height: 0,
-                overflow: "hidden",
-              }}>
-                <iframe
-                  src={vimeoUrl}
-                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            ) : (
-              <div style={{
-                aspectRatio: "16/9",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                color: "#444", fontSize: 13, fontWeight: 300,
-              }}>
-                Video coming soon
-              </div>
-            )}
-          </div>
-          <div style={{
-            marginTop: 8, fontSize: 9, color: "#333", letterSpacing: "0.1em",
-          }}>
-            Max-width: 560px
-          </div>
+        <div className="project-video-col" style={{ flex: 1, maxWidth: 680 }}>
+          {project.vimeo ? (
+            <div style={{ position: "relative", paddingBottom: embedPadding, height: 0, overflow: "hidden" }}>
+              <iframe src={vimeoUrl} style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen />
+            </div>
+          ) : (
+            <div style={{ aspectRatio: "16/9", display: "flex", alignItems: "center", justifyContent: "center", color: "#444", fontSize: 13, fontWeight: 300, background: "#111" }}>Video coming soon</div>
+          )}
         </div>
       </div>
     </div>
   );
 }
-
 function StaggeredGrid({ projects, onClick }) {
   const col1 = projects.filter((_, i) => i % 3 === 0);
   const col2 = projects.filter((_, i) => i % 3 === 1);
   const col3 = projects.filter((_, i) => i % 3 === 2);
-
   return (
-    <div className="stagger-grid" style={{
-      display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0 32px",
-      alignItems: "start",
-    }}>
-      <div>
-        {col1.map((p) => <ProjectCard key={p.id} project={p} onClick={onClick} />)}
-      </div>
-      <div>
-        {col2.map((p) => <ProjectCard key={p.id} project={p} onClick={onClick} />)}
-      </div>
-      <div>
-        {col3.map((p) => <ProjectCard key={p.id} project={p} onClick={onClick} />)}
-      </div>
+    <div className="stagger-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0 32px", alignItems: "start" }}>
+      <div>{col1.map((p) => <ProjectCard key={p.id} project={p} onClick={onClick} />)}</div>
+      <div>{col2.map((p) => <ProjectCard key={p.id} project={p} onClick={onClick} />)}</div>
+      <div>{col3.map((p) => <ProjectCard key={p.id} project={p} onClick={onClick} />)}</div>
     </div>
   );
 }
@@ -215,50 +100,20 @@ export default function BlaizeFobbe() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const scrollRef = useRef(null);
-
-  const handleProjectClick = (project) => {
-    setSelectedProject(project);
-    if (scrollRef.current) scrollRef.current.scrollTop = 0;
-  };
-
-  const handleBack = () => {
-    setSelectedProject(null);
-  };
-
+  const handleProjectClick = (project) => { setSelectedProject(project); if (scrollRef.current) scrollRef.current.scrollTop = 0; };
+  const handleBack = () => { setSelectedProject(null); };
   const currentList = PROJECTS.all;
   const currentIndex = selectedProject ? currentList.findIndex(p => p.id === selectedProject.id) : -1;
   const hasPrev = currentIndex > 0;
   const hasNext = currentIndex < currentList.length - 1;
-
-  const handlePrev = () => {
-    if (hasPrev) {
-      setSelectedProject(currentList[currentIndex - 1]);
-      if (scrollRef.current) scrollRef.current.scrollTop = 0;
-    }
-  };
-
-  const handleNext = () => {
-    if (hasNext) {
-      setSelectedProject(currentList[currentIndex + 1]);
-      if (scrollRef.current) scrollRef.current.scrollTop = 0;
-    }
-  };
-
-  const navClick = (target) => {
-    setPage(target);
-    setSelectedProject(null);
-    setMenuOpen(false);
-    if (scrollRef.current) scrollRef.current.scrollTop = 0;
-  };
+  const handlePrev = () => { if (hasPrev) { setSelectedProject(currentList[currentIndex - 1]); if (scrollRef.current) scrollRef.current.scrollTop = 0; } };
+  const handleNext = () => { if (hasNext) { setSelectedProject(currentList[currentIndex + 1]); if (scrollRef.current) scrollRef.current.scrollTop = 0; } };
+  const navClick = (target) => { setPage(target); setSelectedProject(null); setMenuOpen(false); if (scrollRef.current) scrollRef.current.scrollTop = 0; };
 
   return (
-    <div ref={scrollRef} style={{
-      background: "#000", height: "100vh", color: "#e8e4df",
-      fontFamily: "'Josefin Sans', 'Helvetica Neue', Helvetica, sans-serif",
-      position: "relative", overflowX: "hidden", overflowY: "auto",
-    }}>
+    <div ref={scrollRef} style={{ background: "#000", height: "100vh", color: "#e8e4df", fontFamily: "'Inter', 'Helvetica Neue', Helvetica, sans-serif", position: "relative", overflowX: "hidden", overflowY: "auto" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { overflow-y: auto !important; height: auto !important; }
         ::selection { background: #e8e4df; color: #000; }
@@ -280,183 +135,65 @@ export default function BlaizeFobbe() {
         }
       `}</style>
 
-      {/* Top Nav */}
-      <nav className="desktop-top-nav" style={{
-        position: "fixed", top: 0, left: 0, right: 0,
-        zIndex: 50,
-        background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)",
-      }}>
-        <div style={{
-          display: "flex", justifyContent: "space-between", alignItems: "center",
-          padding: "32px 48px",
-        }}>
-          <div
-            onClick={() => navClick("work")}
-            style={{
-              fontSize: 14, fontWeight: 400, letterSpacing: "0.25em",
-              color: "#777", cursor: "pointer", transition: "color 0.3s",
-              textTransform: "uppercase",
-            }}
-            onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
-            onMouseLeave={(e) => e.target.style.color = "#777"}
-          >
-            Blaize Fobbe
-          </div>
-          <div
-            onClick={() => navClick("about")}
-            style={{
-              fontSize: 12, fontWeight: 300, letterSpacing: "0.2em",
-              color: page === "about" ? "#e8e4df" : "#555",
-              cursor: "pointer", transition: "color 0.3s ease",
-              textTransform: "uppercase",
-            }}
-            onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
-            onMouseLeave={(e) => { if (page !== "about") e.target.style.color = "#555"; }}
-          >
-            About
-          </div>
+      <nav className="desktop-top-nav" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "32px 48px" }}>
+          <div onClick={() => navClick("work")} style={{ fontSize: 12, fontWeight: 400, letterSpacing: "0.14em", color: "#333", cursor: "pointer", transition: "color 0.3s", textTransform: "uppercase" }} onMouseEnter={(e) => e.target.style.color = "#888"} onMouseLeave={(e) => e.target.style.color = "#333"}>Blaize Fobbe</div>
+          <div onClick={() => navClick("about")} style={{ fontSize: 12, fontWeight: 400, letterSpacing: "0.14em", color: page === "about" ? "#888" : "#333", cursor: "pointer", transition: "color 0.3s ease", textTransform: "uppercase" }} onMouseEnter={(e) => e.target.style.color = "#888"} onMouseLeave={(e) => { if (page !== "about") e.target.style.color = "#333"; }}>About</div>
         </div>
       </nav>
 
-      <div className="mobile-nav-btn" style={{
-        display: "none", position: "fixed", top: 16, right: 20,
-        zIndex: 60, cursor: "pointer", padding: 8,
-        transition: "transform 0.4s ease",
-        transform: menuOpen ? "rotate(90deg)" : "rotate(0deg)",
-      }} onClick={() => setMenuOpen(!menuOpen)}>
-        <div style={{
-          width: 20, height: 1.5, background: "#e8e4df",
-          transform: "rotate(45deg)", position: "absolute",
-        }} />
-        <div style={{
-          width: 20, height: 1.5, background: "#e8e4df",
-          transform: "rotate(-45deg)",
-        }} />
+      <div className="mobile-nav-btn" style={{ display: "none", position: "fixed", top: 16, right: 20, zIndex: 60, cursor: "pointer", padding: 8, transition: "transform 0.4s ease", transform: menuOpen ? "rotate(90deg)" : "rotate(0deg)" }} onClick={() => setMenuOpen(!menuOpen)}>
+        <div style={{ width: 20, height: 1.5, background: "#e8e4df", transform: "rotate(45deg)", position: "absolute" }} />
+        <div style={{ width: 20, height: 1.5, background: "#e8e4df", transform: "rotate(-45deg)" }} />
       </div>
-
-      <div className="mobile-nav-btn" style={{
-        display: "none", position: "fixed", top: 20, left: 24,
-        zIndex: 60, fontSize: 12, fontWeight: 400, letterSpacing: "0.2em",
-        color: "#777", cursor: "pointer", textTransform: "uppercase",
-      }}
-        onClick={() => navClick("work")}
-      >
-        Blaize Fobbe
-      </div>
+      <div className="mobile-nav-btn" style={{ display: "none", position: "fixed", top: 20, left: 24, zIndex: 60, fontSize: 12, fontWeight: 400, letterSpacing: "0.14em", color: "#333", cursor: "pointer", textTransform: "uppercase" }} onClick={() => navClick("work")}>Blaize Fobbe</div>
 
       {menuOpen && (
-        <div style={{
-          position: "fixed", inset: 0, zIndex: 55, background: "#000",
-          display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "flex-start", paddingTop: "30vh", gap: 32,
-        }}>
-          <div onClick={() => navClick("work")} style={{
-            fontSize: 20, fontWeight: page === "work" ? 400 : 300,
-            letterSpacing: "0.1em", color: page === "work" ? "#e8e4df" : "#555",
-            cursor: "pointer", transition: "color 0.3s ease",
-          }}>Work</div>
-          <div onClick={() => navClick("about")} style={{
-            fontSize: 20, fontWeight: page === "about" ? 400 : 300,
-            letterSpacing: "0.1em", color: page === "about" ? "#e8e4df" : "#555",
-            cursor: "pointer", transition: "color 0.3s ease",
-          }}>About</div>
+        <div style={{ position: "fixed", inset: 0, zIndex: 55, background: "#000", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", paddingTop: "30vh", gap: 32 }}>
+          <div onClick={() => navClick("work")} style={{ fontSize: 20, fontWeight: page === "work" ? 400 : 300, letterSpacing: "0.1em", color: page === "work" ? "#e8e4df" : "#555", cursor: "pointer" }}>Work</div>
+          <div onClick={() => navClick("about")} style={{ fontSize: 20, fontWeight: page === "about" ? 400 : 300, letterSpacing: "0.1em", color: page === "about" ? "#e8e4df" : "#555", cursor: "pointer" }}>About</div>
         </div>
       )}
 
-      <main className="main-content" style={{
-        minHeight: "100vh", padding: "140px 48px 48px 48px",
-        overflow: "visible",
-      }}>
-
+      <main className="main-content" style={{ minHeight: "100vh", padding: "140px 48px 48px 48px", overflow: "visible" }}>
         {page === "work" && !selectedProject && (
           <div>
             <StaggeredGrid projects={PROJECTS.all} onClick={handleProjectClick} />
-            <div style={{
-              display: "flex", justifyContent: "flex-end", gap: 20, marginTop: 60, paddingBottom: 48,
-            }}>
-              <a href="https://www.instagram.com/blaizefobbe/" target="_blank" rel="noopener noreferrer"
-                style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", color: "#444", transition: "color 0.3s", textDecoration: "none", textTransform: "uppercase" }}
-                onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
-                onMouseLeave={(e) => e.target.style.color = "#444"}
-              >Instagram</a>
-              <a href="https://vimeo.com/blaizefobbe" target="_blank" rel="noopener noreferrer"
-                style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", color: "#444", transition: "color 0.3s", textDecoration: "none", textTransform: "uppercase" }}
-                onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
-                onMouseLeave={(e) => e.target.style.color = "#444"}
-              >Vimeo</a>
+            <div style={{ display: "flex", justifyContent: "flex-end", gap: 20, marginTop: 60, paddingBottom: 48 }}>
+              <a href="https://www.instagram.com/blaizefobbe/" target="_blank" rel="noopener noreferrer" style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.14em", color: "#333", transition: "color 0.3s", textDecoration: "none", textTransform: "uppercase" }} onMouseEnter={(e) => e.target.style.color = "#888"} onMouseLeave={(e) => e.target.style.color = "#333"}>Instagram</a>
+              <a href="https://vimeo.com/blaizefobbe" target="_blank" rel="noopener noreferrer" style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.14em", color: "#333", transition: "color 0.3s", textDecoration: "none", textTransform: "uppercase" }} onMouseEnter={(e) => e.target.style.color = "#888"} onMouseLeave={(e) => e.target.style.color = "#333"}>Vimeo</a>
             </div>
           </div>
         )}
         {page === "work" && selectedProject && (
-          <ProjectDetail project={selectedProject} onBack={handleBack} onPrev={handlePrev} onNext={handleNext} hasPrev={hasPrev} hasNext={hasNext} />
+          <ProjectDetail project={selectedProject} onPrev={handlePrev} onNext={handleNext} hasPrev={hasPrev} hasNext={hasNext} />
         )}
 
         {page === "about" && (
           <div className="about-page-wrap" style={{ maxWidth: 900, margin: "0 auto" }}>
-            <div style={{
-              fontSize: 14, fontWeight: 300, lineHeight: 2,
-              letterSpacing: "0.02em", color: "#807b74",
-              marginBottom: 56, maxWidth: 600,
-            }}>
-              <span style={{ color: "#e8e4df", fontWeight: 400 }}>Blaize Fobbe</span> is a filmmaker based in Los Angeles. Originally from Minneapolis, he began making films with friends as a child. Now he focuses his efforts on <span style={{ color: "#e8e4df", fontWeight: 400 }}>directing</span> and <span style={{ color: "#e8e4df", fontWeight: 400 }}>editing</span> branded, music, and documentary-style films. His portfolio includes collaborations with brands like Nike, Calvin Klein, Mountain Hardwear, Leica, Spotify, Porsche, and many more.
-            </div>
-
-            <div style={{ marginBottom: 48 }}>
-              <div style={{
-                fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
-                color: "#444", marginBottom: 14, textTransform: "uppercase",
-              }}>Clients include</div>
-              <div style={{ fontSize: 13, fontWeight: 300, lineHeight: 2, color: "#807b74" }}>
-                Nike, Google, Calvin Klein, Jordan, Porsche, Red Bull, Gap, Spotify, Cactus Jack, Figs, Leica, New Balance, Lacoste, Mountain Hardwear, eBay
-              </div>
-            </div>
-
             <div className="about-layout" style={{ display: "flex", gap: 72 }}>
               <div className="about-image" style={{ width: 320, flexShrink: 0 }}>
-                <img src="/images/vertblaize.png" alt="Blaize Fobbe" style={{
-                  width: "100%", display: "block", objectFit: "cover",
-                }} />
+                <img src="/images/vertblaize.png" alt="Blaize Fobbe" style={{ width: "100%", display: "block", objectFit: "cover" }} />
               </div>
               <div style={{ flex: 1, paddingTop: 8 }}>
-                <div className="about-contacts" style={{ display: "flex", gap: 56, marginBottom: 32 }}>
+                <div style={{ fontSize: 14, fontWeight: 300, lineHeight: 2, letterSpacing: "0.02em", color: "#807b74", marginBottom: 48, maxWidth: 500 }}>
+                  Blaize Fobbe is a filmmaker based in Los Angeles. Originally from Minneapolis, he began making films with friends as a child. Now he focuses his efforts on directing and editing branded, music, and documentary-style films. His portfolio includes collaborations with brands like Nike, Calvin Klein, Mountain Hardwear, Leica, Spotify, Porsche, and many more.
+                </div>
+                <div style={{ marginBottom: 40 }}>
+                  <div style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.14em", color: "#444", marginBottom: 14 }}>Clients include</div>
+                  <div style={{ fontSize: 13, fontWeight: 300, lineHeight: 2, color: "#807b74" }}>Nike, Google, Calvin Klein, Jordan, Porsche, Red Bull, Gap, Spotify, Cactus Jack, Figs, Leica, New Balance, Lacoste, Mountain Hardwear, eBay</div>
+                </div>
+                <div style={{ display: "flex", gap: 56, marginBottom: 32 }}>
                   <div>
-                    <div style={{
-                      fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
-                      color: "#444", marginBottom: 10, textTransform: "uppercase",
-                    }}>Directing inquiries</div>
+                    <div style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.14em", color: "#444", marginBottom: 10 }}>Directing inquiries</div>
                     <div style={{ fontSize: 13, fontWeight: 300, color: "#807b74", lineHeight: 1.9 }}>
-                      <a href="https://www.6degreesfilms.com" target="_blank" rel="noopener noreferrer"
-                        style={{ color: "#e8e4df" }}>6degrees</a><br />
+                      <a href="https://www.6degreesfilms.com" target="_blank" rel="noopener noreferrer" style={{ color: "#e8e4df" }}>6degrees</a><br />
                       <a href="mailto:Patrick@6degreesfilms.com" style={{ color: "#666" }}>patrick@6degreesfilms.com</a>
                     </div>
                   </div>
                   <div>
-                    <div style={{
-                      fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
-                      color: "#444", marginBottom: 10, textTransform: "uppercase",
-                    }}>Editorial inquiries</div>
+                    <div style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.14em", color: "#444", marginBottom: 10 }}>Editorial inquiries</div>
                     <div style={{ fontSize: 13, fontWeight: 300, color: "#807b74", lineHeight: 1.9 }}>
-                      <a href="https://house-post.com" target="_blank" rel="noopener noreferrer"
-                        style={{ color: "#e8e4df" }}>House Post</a><br />
+                      <a href="https://house-post.com" target="_blank" rel="noopener noreferrer" style={{ color: "#e8e4df" }}>House Post</a><br />
                       <a href="mailto:christo@house-post.com" style={{ color: "#666" }}>christo@house-post.com</a>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div style={{
-                    fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
-                    color: "#444", marginBottom: 10, textTransform: "uppercase",
-                  }}>Personal</div>
-                  <a href="mailto:Blaizeaaronfobbe@gmail.com" style={{ fontSize: 13, fontWeight: 300, color: "#666" }}>
-                    blaizeaaronfobbe@gmail.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-      </main>
-    </div>
-  );
-}
+                    </d
