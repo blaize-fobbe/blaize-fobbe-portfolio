@@ -196,4 +196,17 @@ export default function BlaizeFobbe() {
                     <div style={{ fontSize: 13, fontWeight: 300, color: "#807b74", lineHeight: 1.9 }}>
                       <a href="https://house-post.com" target="_blank" rel="noopener noreferrer" style={{ color: "#e8e4df" }}>House Post</a><br />
                       <a href="mailto:christo@house-post.com" style={{ color: "#666" }}>christo@house-post.com</a>
-                    </d
+                    </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.14em", color: "#444", marginBottom: 10 }}>Personal</div>
+                  <a href="mailto:Blaizeaaronfobbe@gmail.com" style={{ fontSize: 13, fontWeight: 300, color: "#666" }}>blaizeaaronfobbe@gmail.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}
