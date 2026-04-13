@@ -2,27 +2,27 @@ import { useState, useEffect, useRef } from "react";
 
 const PROJECTS = {
   all: [
-    { id: 1, title: "Figs x New Balance 997H — Extremes", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_8.jpg", vimeo: "909886821" },
-    { id: 2, title: "Calvin Klein — Pride", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_7.jpg", vimeo: "726852934", vimeoHash: "ab3f985689" },
-    { id: 3, title: "Sapasi", role: "Director", category: "Brand", aspect: "2944/2160", thumb: "/images/thumb_3.jpg", vimeo: "970279084" },
-    { id: 4, title: "Requiem", role: "Director", category: "Film", aspect: "16/9", thumb: "/images/thumb_11.jpg", vimeo: "830769227" },
-    { id: 5, title: "Google — Seed", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_3.jpg", vimeo: "1038510961", vimeoHash: "eacf923e38" },
-    { id: 6, title: "Mati — Pressure", role: "Director", category: "Music", aspect: "3104/2160", thumb: "/images/thumb_6.jpg", vimeo: "761345388" },
-    { id: 7, title: "MASN — Here If You Need Me", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_9.jpg", vimeo: "970175484" },
-    { id: 8, title: "Porsche — 968 L'ART", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_9.jpg", vimeo: "800032962" },
-    { id: 9, title: "Big House — Home Goods Skits", role: "Director", category: "Brand", aspect: "2880/2160", thumb: "/images/thumb_0.jpg", vimeo: "1163381474" },
-    { id: 10, title: "Travis Scott x Jordan 1 Low — Don't Get Caught", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_4.jpg", vimeo: "761584332", vimeoHash: "e701da9787" },
-    { id: 11, title: "Giveon — Lost Me", role: "Editor", category: "Music", aspect: "16/9", thumb: "/images/edit_6.jpg", vimeo: "761343426" },
-    { id: 12, title: "American Eagle — Live Your Life", role: "Editor", category: "Brand", aspect: "2880/2160", thumb: "/images/edit_10.jpg", vimeo: "995661319", vimeoHash: "ba34f30287" },
-    { id: 13, title: "Spotify Frequency — KWN", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_1.jpg", vimeo: "1121369000" },
-    { id: 14, title: "Nike Air Force 1 — Mid Jewel NYC", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_5.jpg", vimeo: "655533206", vimeoHash: "a6222f8687" },
-    { id: 15, title: "Ber — Superspreader", role: "Director", category: "Music", aspect: "1928/1440", thumb: "/images/thumb_5.jpg", vimeo: "761590340" },
-    { id: 16, title: "Orlando Pride — The Decennial Kit", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_2.jpg", vimeo: "1061834025" },
-    { id: 17, title: "Jordan Essentials — Marquise Miller", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_8.jpg", vimeo: "772302980", vimeoHash: "1158642730" },
-    { id: 18, title: "Mati — Forever Chimes", role: "Director", category: "Music", aspect: "16/9", thumb: "/images/thumb_4.jpg", vimeo: "785782071" },
-    { id: 19, title: "New Balance — Forever Yours", role: "Editor", category: "Brand", aspect: "16/9", thumb: "/images/edit_1.jpg", vimeo: "855779982", vimeoHash: "0f482760c6" },
-    { id: 20, title: "untitled_070724", role: "Shot on iPhone", category: "Film", aspect: "16/9", thumb: "/images/thumb_10.jpg", vimeo: "988435818" },
-    { id: 21, title: "Mountain Hardwear — Seek Wilder Paths", role: "Cinematographer / Editor", category: "Brand", aspect: "16/9", thumb: "/images/thumb_7.jpg", vimeo: "858091000" },
+    { id: 1, title: "Figs x New Balance 997H — Extremes", role: "Director", aspect: "16/9", thumb: "/images/thumb_8.jpg", vimeo: "909886821", size: "lg" },
+    { id: 3, title: "Sapasi", role: "Director", aspect: "2944/2160", thumb: "/images/thumb_3.jpg", vimeo: "970279084", size: "sm" },
+    { id: 9, title: "Big House — Home Goods Skits", role: "Director", aspect: "2880/2160", thumb: "/images/thumb_0.jpg", vimeo: "1163381474", size: "lg" },
+    { id: 21, title: "Mountain Hardwear — Seek Wilder Paths", role: "Cinematographer / Editor", aspect: "16/9", thumb: "/images/thumb_7.jpg", vimeo: "858091000", size: "sm" },
+    { id: 13, title: "Spotify Frequency — KWN", role: "Director", aspect: "16/9", thumb: "/images/thumb_1.jpg", vimeo: "1121369000", size: "lg" },
+    { id: 4, title: "Requiem", role: "Director", aspect: "16/9", thumb: "/images/thumb_11.jpg", vimeo: "830769227", size: "sm" },
+    { id: 2, title: "Calvin Klein — Pride", role: "Editor", aspect: "16/9", thumb: "/images/edit_7.jpg", vimeo: "726852934", vimeoHash: "ab3f985689", size: "lg" },
+    { id: 5, title: "Google — Seed", role: "Editor", aspect: "16/9", thumb: "/images/edit_3.jpg", vimeo: "1038510961", vimeoHash: "eacf923e38", size: "sm" },
+    { id: 6, title: "Mati — Pressure", role: "Director", aspect: "3104/2160", thumb: "/images/thumb_6.jpg", vimeo: "761345388", size: "lg" },
+    { id: 7, title: "MASN — Here If You Need Me", role: "Director", aspect: "16/9", thumb: "/images/thumb_9.jpg", vimeo: "970175484", size: "sm" },
+    { id: 8, title: "Porsche — 968 L'ART", role: "Editor", aspect: "16/9", thumb: "/images/edit_9.jpg", vimeo: "800032962", size: "lg" },
+    { id: 10, title: "Travis Scott x Jordan 1 Low — Don't Get Caught", role: "Editor", aspect: "16/9", thumb: "/images/edit_4.jpg", vimeo: "761584332", vimeoHash: "e701da9787", size: "sm" },
+    { id: 11, title: "Giveon — Lost Me", role: "Editor", aspect: "16/9", thumb: "/images/edit_6.jpg", vimeo: "761343426", size: "lg" },
+    { id: 12, title: "American Eagle — Live Your Life", role: "Editor", aspect: "2880/2160", thumb: "/images/edit_10.jpg", vimeo: "995661319", vimeoHash: "ba34f30287", size: "sm" },
+    { id: 14, title: "Nike Air Force 1 — Mid Jewel NYC", role: "Editor", aspect: "16/9", thumb: "/images/edit_5.jpg", vimeo: "655533206", vimeoHash: "a6222f8687", size: "lg" },
+    { id: 15, title: "Ber — Superspreader", role: "Director", aspect: "1928/1440", thumb: "/images/thumb_5.jpg", vimeo: "761590340", size: "sm" },
+    { id: 16, title: "Orlando Pride — The Decennial Kit", role: "Director", aspect: "16/9", thumb: "/images/thumb_2.jpg", vimeo: "1061834025", size: "lg" },
+    { id: 17, title: "Jordan Essentials — Marquise Miller", role: "Editor", aspect: "16/9", thumb: "/images/edit_8.jpg", vimeo: "772302980", vimeoHash: "1158642730", size: "sm" },
+    { id: 18, title: "Mati — Forever Chimes", role: "Director", aspect: "16/9", thumb: "/images/thumb_4.jpg", vimeo: "785782071", size: "lg" },
+    { id: 19, title: "New Balance — Forever Yours", role: "Editor", aspect: "16/9", thumb: "/images/edit_1.jpg", vimeo: "855779982", vimeoHash: "0f482760c6", size: "sm" },
+    { id: 20, title: "untitled_070724", role: "Shot on iPhone", aspect: "16/9", thumb: "/images/thumb_10.jpg", vimeo: "988435818", size: "lg" },
   ],
 };
 
@@ -40,6 +40,8 @@ function ProjectCard({ project, onClick }) {
     return () => obs.disconnect();
   }, []);
 
+  const scale = project.size === "lg" ? 1 : 0.82;
+
   return (
     <div
       ref={ref}
@@ -52,6 +54,7 @@ function ProjectCard({ project, onClick }) {
         transform: visible ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.5s ease, transform 0.5s ease",
         cursor: "pointer",
+        width: `${scale * 100}%`,
       }}
     >
       <div style={{
@@ -73,6 +76,7 @@ function ProjectCard({ project, onClick }) {
           fontSize: 11, fontWeight: 400, letterSpacing: "0.06em",
           color: hovered ? "#e8e4df" : "#888",
           transition: "color 0.3s ease",
+          textTransform: "uppercase",
         }}>{project.title}</div>
         <div style={{
           fontSize: 10, fontWeight: 300, letterSpacing: "0.06em",
@@ -96,10 +100,10 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
       <style>{`@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }`}</style>
 
       <div className="project-detail-layout" style={{
-        display: "flex", gap: 60, alignItems: "flex-start",
+        display: "flex", gap: 48, alignItems: "flex-start",
       }}>
         <div className="project-info-col" style={{
-          width: 200, flexShrink: 0, paddingTop: 4,
+          width: 240, flexShrink: 0, paddingTop: 4,
         }}>
           <div
             onClick={onBack}
@@ -107,6 +111,7 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
               fontSize: 10, fontWeight: 300, letterSpacing: "0.12em",
               color: "#555", cursor: "pointer", marginBottom: 40,
               transition: "color 0.3s", display: "inline-block",
+              textTransform: "uppercase",
             }}
             onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
             onMouseLeave={(e) => e.target.style.color = "#555"}
@@ -114,11 +119,12 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
             ← Back
           </div>
           <div style={{
-            fontSize: 13, fontWeight: 400, letterSpacing: "0.04em",
+            fontSize: 13, fontWeight: 400, letterSpacing: "0.02em",
             color: "#e8e4df", marginBottom: 6, lineHeight: 1.5,
+            textTransform: "uppercase",
           }}>{project.title}</div>
           <div style={{
-            fontSize: 11, fontWeight: 300, letterSpacing: "0.06em", color: "#555",
+            fontSize: 11, fontWeight: 300, letterSpacing: "0.04em", color: "#555",
           }}>{project.role}</div>
 
           <div style={{ display: "flex", gap: 28, alignItems: "center", marginTop: 32 }}>
@@ -141,42 +147,41 @@ function ProjectDetail({ project, onBack, onPrev, onNext, hasPrev, hasNext }) {
           </div>
         </div>
 
-        <div className="project-video-col" style={{ flex: 1 }}>
-          {project.vimeo ? (
-            <div style={{
-              position: "relative", paddingBottom: embedPadding, height: 0,
-              overflow: "hidden", background: "#000",
-            }}>
-              <iframe
-                src={vimeoUrl}
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          ) : (
-            <div style={{
-              aspectRatio: "16/9", background: "#111",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              color: "#444", fontSize: 13, fontWeight: 300,
-            }}>
-              Video coming soon
-            </div>
-          )}
+        <div className="project-video-col" style={{ flex: 1, maxWidth: 560 }}>
+          <div style={{
+            position: "relative",
+            background: "#1a1a2e",
+            border: "1px solid #333",
+            borderRadius: 2,
+          }}>
+            {project.vimeo ? (
+              <div style={{
+                position: "relative", paddingBottom: embedPadding, height: 0,
+                overflow: "hidden",
+              }}>
+                <iframe
+                  src={vimeoUrl}
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ) : (
+              <div style={{
+                aspectRatio: "16/9",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                color: "#444", fontSize: 13, fontWeight: 300,
+              }}>
+                Video coming soon
+              </div>
+            )}
+          </div>
+          <div style={{
+            marginTop: 8, fontSize: 9, color: "#333", letterSpacing: "0.1em",
+          }}>
+            Max-width: 560px
+          </div>
         </div>
-      </div>
-
-      <div style={{ display: "flex", justifyContent: "flex-end", gap: 20, marginTop: "40vh", paddingBottom: 48 }}>
-        <a href="https://www.instagram.com/blaizefobbe/" target="_blank" rel="noopener noreferrer"
-          style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", color: "#444", transition: "color 0.3s", textDecoration: "none" }}
-          onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
-          onMouseLeave={(e) => e.target.style.color = "#444"}
-        >Instagram</a>
-        <a href="https://vimeo.com/blaizefobbe" target="_blank" rel="noopener noreferrer"
-          style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", color: "#444", transition: "color 0.3s", textDecoration: "none" }}
-          onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
-          onMouseLeave={(e) => e.target.style.color = "#444"}
-        >Vimeo</a>
       </div>
     </div>
   );
@@ -190,14 +195,15 @@ function StaggeredGrid({ projects, onClick }) {
   return (
     <div className="stagger-grid" style={{
       display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0 32px",
+      alignItems: "start",
     }}>
-      <div style={{ paddingTop: 0 }}>
+      <div>
         {col1.map((p) => <ProjectCard key={p.id} project={p} onClick={onClick} />)}
       </div>
-      <div style={{ paddingTop: 80 }}>
+      <div>
         {col2.map((p) => <ProjectCard key={p.id} project={p} onClick={onClick} />)}
       </div>
-      <div style={{ paddingTop: 160 }}>
+      <div>
         {col3.map((p) => <ProjectCard key={p.id} project={p} onClick={onClick} />)}
       </div>
     </div>
@@ -249,7 +255,6 @@ export default function BlaizeFobbe() {
     <div ref={scrollRef} style={{
       background: "#000", height: "100vh", color: "#e8e4df",
       fontFamily: "'Josefin Sans', 'Helvetica Neue', Helvetica, sans-serif",
-      textTransform: "uppercase",
       position: "relative", overflowX: "hidden", overflowY: "auto",
     }}>
       <style>{`
@@ -266,18 +271,16 @@ export default function BlaizeFobbe() {
           .mobile-nav-btn { display: flex !important; }
           .main-content { padding: 80px 24px 48px 24px !important; }
           .stagger-grid { grid-template-columns: 1fr !important; }
-          .stagger-grid > div { padding-top: 0 !important; }
           .about-layout { flex-direction: column !important; gap: 40px !important; }
           .about-image { width: 100% !important; max-width: 280px !important; }
           .about-page-wrap { padding-left: 0 !important; padding-right: 0 !important; }
-          .about-blurb { font-size: 14px !important; }
           .project-detail-layout { flex-direction: column !important; gap: 24px !important; }
           .project-info-col { width: 100% !important; }
-          .project-video-col { width: 100% !important; margin: 0 -24px !important; width: calc(100% + 48px) !important; }
+          .project-video-col { max-width: 100% !important; margin: 0 -24px !important; width: calc(100% + 48px) !important; }
         }
       `}</style>
 
-      {/* Top Nav — Desktop */}
+      {/* Top Nav */}
       <nav className="desktop-top-nav" style={{
         position: "fixed", top: 0, left: 0, right: 0,
         zIndex: 50,
@@ -290,8 +293,9 @@ export default function BlaizeFobbe() {
           <div
             onClick={() => navClick("work")}
             style={{
-              fontSize: 14, fontWeight: 300, letterSpacing: "0.25em",
+              fontSize: 14, fontWeight: 400, letterSpacing: "0.25em",
               color: "#777", cursor: "pointer", transition: "color 0.3s",
+              textTransform: "uppercase",
             }}
             onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
             onMouseLeave={(e) => e.target.style.color = "#777"}
@@ -304,6 +308,7 @@ export default function BlaizeFobbe() {
               fontSize: 12, fontWeight: 300, letterSpacing: "0.2em",
               color: page === "about" ? "#e8e4df" : "#555",
               cursor: "pointer", transition: "color 0.3s ease",
+              textTransform: "uppercase",
             }}
             onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
             onMouseLeave={(e) => { if (page !== "about") e.target.style.color = "#555"; }}
@@ -313,7 +318,6 @@ export default function BlaizeFobbe() {
         </div>
       </nav>
 
-      {/* Mobile Nav Button */}
       <div className="mobile-nav-btn" style={{
         display: "none", position: "fixed", top: 16, right: 20,
         zIndex: 60, cursor: "pointer", padding: 8,
@@ -330,56 +334,40 @@ export default function BlaizeFobbe() {
         }} />
       </div>
 
-      {/* Mobile Name (top left) */}
       <div className="mobile-nav-btn" style={{
         display: "none", position: "fixed", top: 20, left: 24,
-        zIndex: 60, fontSize: 12, fontWeight: 300, letterSpacing: "0.2em",
-        color: "#777", cursor: "pointer",
+        zIndex: 60, fontSize: 12, fontWeight: 400, letterSpacing: "0.2em",
+        color: "#777", cursor: "pointer", textTransform: "uppercase",
       }}
         onClick={() => navClick("work")}
       >
         Blaize Fobbe
       </div>
 
-      {/* Mobile Menu Overlay */}
       {menuOpen && (
         <div style={{
           position: "fixed", inset: 0, zIndex: 55, background: "#000",
           display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "flex-start", paddingTop: "30vh", gap: 32,
         }}>
-          <div
-            onClick={() => navClick("work")}
-            style={{
-              fontSize: 20, fontWeight: page === "work" ? 400 : 300,
-              letterSpacing: "0.1em",
-              color: page === "work" ? "#e8e4df" : "#555",
-              cursor: "pointer", transition: "color 0.3s ease",
-            }}
-          >
-            Work
-          </div>
-          <div
-            onClick={() => navClick("about")}
-            style={{
-              fontSize: 20, fontWeight: page === "about" ? 400 : 300,
-              letterSpacing: "0.1em",
-              color: page === "about" ? "#e8e4df" : "#555",
-              cursor: "pointer", transition: "color 0.3s ease",
-            }}
-          >
-            About
-          </div>
+          <div onClick={() => navClick("work")} style={{
+            fontSize: 20, fontWeight: page === "work" ? 400 : 300,
+            letterSpacing: "0.1em", color: page === "work" ? "#e8e4df" : "#555",
+            cursor: "pointer", transition: "color 0.3s ease",
+          }}>Work</div>
+          <div onClick={() => navClick("about")} style={{
+            fontSize: 20, fontWeight: page === "about" ? 400 : 300,
+            letterSpacing: "0.1em", color: page === "about" ? "#e8e4df" : "#555",
+            cursor: "pointer", transition: "color 0.3s ease",
+          }}>About</div>
         </div>
       )}
 
-      {/* Main Content */}
       <main className="main-content" style={{
         minHeight: "100vh", padding: "140px 48px 48px 48px",
         overflow: "visible",
       }}>
 
-        {/* WORK */}
         {page === "work" && !selectedProject && (
           <div>
             <StaggeredGrid projects={PROJECTS.all} onClick={handleProjectClick} />
@@ -387,12 +375,12 @@ export default function BlaizeFobbe() {
               display: "flex", justifyContent: "flex-end", gap: 20, marginTop: 60, paddingBottom: 48,
             }}>
               <a href="https://www.instagram.com/blaizefobbe/" target="_blank" rel="noopener noreferrer"
-                style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", color: "#444", transition: "color 0.3s", textDecoration: "none" }}
+                style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", color: "#444", transition: "color 0.3s", textDecoration: "none", textTransform: "uppercase" }}
                 onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
                 onMouseLeave={(e) => e.target.style.color = "#444"}
               >Instagram</a>
               <a href="https://vimeo.com/blaizefobbe" target="_blank" rel="noopener noreferrer"
-                style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", color: "#444", transition: "color 0.3s", textDecoration: "none" }}
+                style={{ fontSize: 9, fontWeight: 400, letterSpacing: "0.16em", color: "#444", transition: "color 0.3s", textDecoration: "none", textTransform: "uppercase" }}
                 onMouseEnter={(e) => e.target.style.color = "#e8e4df"}
                 onMouseLeave={(e) => e.target.style.color = "#444"}
               >Vimeo</a>
@@ -403,16 +391,26 @@ export default function BlaizeFobbe() {
           <ProjectDetail project={selectedProject} onBack={handleBack} onPrev={handlePrev} onNext={handleNext} hasPrev={hasPrev} hasNext={hasNext} />
         )}
 
-        {/* ABOUT */}
         {page === "about" && (
           <div className="about-page-wrap" style={{ maxWidth: 900, margin: "0 auto" }}>
-            <div className="about-blurb" style={{
-              fontSize: 15, fontWeight: 300, lineHeight: 1.9,
+            <div style={{
+              fontSize: 14, fontWeight: 300, lineHeight: 2,
               letterSpacing: "0.02em", color: "#807b74",
-              marginBottom: 72, maxWidth: 720,
+              marginBottom: 56, maxWidth: 600,
             }}>
               <span style={{ color: "#e8e4df", fontWeight: 400 }}>Blaize Fobbe</span> is a filmmaker based in Los Angeles. Originally from Minneapolis, he began making films with friends as a child. Now he focuses his efforts on <span style={{ color: "#e8e4df", fontWeight: 400 }}>directing</span> and <span style={{ color: "#e8e4df", fontWeight: 400 }}>editing</span> branded, music, and documentary-style films. His portfolio includes collaborations with brands like Nike, Calvin Klein, Mountain Hardwear, Leica, Spotify, Porsche, and many more.
             </div>
+
+            <div style={{ marginBottom: 48 }}>
+              <div style={{
+                fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
+                color: "#444", marginBottom: 14, textTransform: "uppercase",
+              }}>Clients include</div>
+              <div style={{ fontSize: 13, fontWeight: 300, lineHeight: 2, color: "#807b74" }}>
+                Nike, Google, Calvin Klein, Jordan, Porsche, Red Bull, Gap, Spotify, Cactus Jack, Figs, Leica, New Balance, Lacoste, Mountain Hardwear, eBay
+              </div>
+            </div>
+
             <div className="about-layout" style={{ display: "flex", gap: 72 }}>
               <div className="about-image" style={{ width: 320, flexShrink: 0 }}>
                 <img src="/images/vertblaize.png" alt="Blaize Fobbe" style={{
@@ -420,21 +418,12 @@ export default function BlaizeFobbe() {
                 }} />
               </div>
               <div style={{ flex: 1, paddingTop: 8 }}>
-                <div style={{ marginBottom: 56 }}>
-                  <div style={{
-                    fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
-                    color: "#444", marginBottom: 16,
-                  }}>Clients Include</div>
-                  <div style={{ fontSize: 13, fontWeight: 300, lineHeight: 2.2, color: "#807b74" }}>
-                    Nike, Google, Calvin Klein, Jordan, Porsche, Red Bull, Gap, Spotify, Cactus Jack, Figs, Leica, New Balance, Lacoste, Mountain Hardwear, eBay
-                  </div>
-                </div>
-                <div className="about-contacts" style={{ display: "flex", gap: 56 }}>
+                <div className="about-contacts" style={{ display: "flex", gap: 56, marginBottom: 32 }}>
                   <div>
                     <div style={{
                       fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
-                      color: "#444", marginBottom: 10,
-                    }}>Directing Inquiries</div>
+                      color: "#444", marginBottom: 10, textTransform: "uppercase",
+                    }}>Directing inquiries</div>
                     <div style={{ fontSize: 13, fontWeight: 300, color: "#807b74", lineHeight: 1.9 }}>
                       <a href="https://www.6degreesfilms.com" target="_blank" rel="noopener noreferrer"
                         style={{ color: "#e8e4df" }}>6degrees</a><br />
@@ -444,8 +433,8 @@ export default function BlaizeFobbe() {
                   <div>
                     <div style={{
                       fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
-                      color: "#444", marginBottom: 10,
-                    }}>Editorial Inquiries</div>
+                      color: "#444", marginBottom: 10, textTransform: "uppercase",
+                    }}>Editorial inquiries</div>
                     <div style={{ fontSize: 13, fontWeight: 300, color: "#807b74", lineHeight: 1.9 }}>
                       <a href="https://house-post.com" target="_blank" rel="noopener noreferrer"
                         style={{ color: "#e8e4df" }}>House Post</a><br />
@@ -453,10 +442,10 @@ export default function BlaizeFobbe() {
                     </div>
                   </div>
                 </div>
-                <div style={{ marginTop: 32 }}>
+                <div>
                   <div style={{
                     fontSize: 9, fontWeight: 400, letterSpacing: "0.16em",
-                    color: "#444", marginBottom: 10,
+                    color: "#444", marginBottom: 10, textTransform: "uppercase",
                   }}>Personal</div>
                   <a href="mailto:Blaizeaaronfobbe@gmail.com" style={{ fontSize: 13, fontWeight: 300, color: "#666" }}>
                     blaizeaaronfobbe@gmail.com
