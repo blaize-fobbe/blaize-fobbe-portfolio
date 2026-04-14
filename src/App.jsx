@@ -370,14 +370,12 @@ export default function BlaizeFobbe() {
           .about-layout { flex-direction: column !important; gap: 40px !important; }
           .about-image { width: 100% !important; max-width: 280px !important; }
           .home-blurb-wrap { min-width: unset !important; width: 100% !important; margin: 0 !important; padding-top: 30vh !important; display: flex !important; justify-content: center !important; }
-          .home-blurb-text { font-size: 22px !important; padding-right: 0 !important; text-align: center !important; max-width: 85vw !important; }
+          .home-blurb-text { font-size: 19px !important; padding-right: 0 !important; text-align: center !important; max-width: 85vw !important; }
           .work-header { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
           .project-detail-bottom { flex-direction: row !important; gap: 12px !important; }
           .filter-row { order: 1; }
           .social-row { display: none !important; }
           .mobile-social-bottom { display: flex !important; }
-          .mobile-cover-video { display: block !important; }
-          .mobile-cover-overlay { display: block !important; }
         }
       `}</style>
 
