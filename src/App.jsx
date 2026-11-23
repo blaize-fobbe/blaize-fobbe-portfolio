@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 const PROJECTS = {
   all: [
-    { id: 23, title: "Timberwolves — Real Loud", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_twolves.jpg", vimeo: "1246760144" },
+    { id: 23, title: "Timberwolves — Real Loud", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_twolves.jpg", vimeo: "1246760144", stills: ["/images/stills/timberwolves_01.jpg", "/images/stills/timberwolves_02.jpg", "/images/stills/timberwolves_03.jpg", "/images/stills/timberwolves_04.jpg", "/images/stills/timberwolves_05.jpg", "/images/stills/timberwolves_06.jpg"] },
     { id: 1, title: "Figs x New Balance 997H — Extremes", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_8.jpg", splashThumb: "/images/stills/figs_nb_02.jpg", vimeo: "909886821", stills: ["/images/stills/figs_nb_02.jpg", "/images/stills/figs_nb_03.jpg", "/images/stills/figs_nb_01.jpg", "/images/stills/figs_nb_04.jpg", "/images/stills/figs_nb_05.jpg"] },
     { id: 22, title: "The Circle of Us", role: "Director", category: "Film", aspect: "4/3", thumb: "/images/thumb_circle.jpg", vimeo: "1192897924", stills: ["/images/stills/circle_of_us_01.jpg", "/images/stills/circle_of_us_02.jpg", "/images/stills/circle_of_us_03.jpg", "/images/stills/circle_of_us_04.jpg"] },
     { id: 3, title: "Sapasi", role: "Director", category: "Brand", aspect: "2944/2160", thumb: "/images/thumb_3.jpg", vimeo: "970279084", vignettes: [
