@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 const PROJECTS = {
   all: [
+    { id: 23, title: "Timberwolves — Real Loud", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_twolves.jpg", vimeo: "1246760144" },
     { id: 1, title: "Figs x New Balance 997H — Extremes", role: "Director", category: "Brand", aspect: "16/9", thumb: "/images/thumb_8.jpg", splashThumb: "/images/stills/figs_nb_02.jpg", vimeo: "909886821", stills: ["/images/stills/figs_nb_02.jpg", "/images/stills/figs_nb_03.jpg", "/images/stills/figs_nb_01.jpg", "/images/stills/figs_nb_04.jpg", "/images/stills/figs_nb_05.jpg"] },
     { id: 22, title: "The Circle of Us", role: "Director", category: "Film", aspect: "4/3", thumb: "/images/thumb_circle.jpg", vimeo: "1192897924", stills: ["/images/stills/circle_of_us_01.jpg", "/images/stills/circle_of_us_02.jpg", "/images/stills/circle_of_us_03.jpg", "/images/stills/circle_of_us_04.jpg"] },
     { id: 3, title: "Sapasi", role: "Director", category: "Brand", aspect: "2944/2160", thumb: "/images/thumb_3.jpg", vimeo: "970279084", vignettes: [
@@ -300,7 +301,7 @@ export default function BlaizeFobbe() {
     const list = PROJECTS.all;
     if (workFilter === "All") return list;
     if (workFilter === "Director") {
-      const dirOrder = ["Requiem", "Sapasi", "Figs x New Balance", "Circle of Us", "Big House", "Spotify Frequency", "Mati — Pressure", "MASN", "Ber", "Mati — Forever", "Orlando Pride", "untitled"];
+      const dirOrder = ["Timberwolves", "Sapasi", "Figs x New Balance", "Circle of Us", "Big House", "Spotify Frequency", "Mati — Pressure", "Orlando Pride", "Ber", "Mati — Forever", "Requiem", "MASN", "untitled"];
       return list.filter((p) => p.role.includes("Director") || p.role === "Shot on iPhone")
         .sort((a, b) => { const ai = dirOrder.findIndex(d => a.title.includes(d)); const bi = dirOrder.findIndex(d => b.title.includes(d)); return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi); });
     }
